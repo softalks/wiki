@@ -19,3 +19,6 @@ The following environment variables are parsed and used at the moment
 ```bash
 docker run  -dt -p 8080:80 -v /home/data/:/data -e URL_HOST=http://10.11.12.13:8080/ -e ADMIN_PW=pass1234 twiki
 ```
+
+## Note: Forked
+This repository was forked from https://github.com/BundesIT/twiki-docker and then modified, so that a newer OS and TWiki version will be used.
