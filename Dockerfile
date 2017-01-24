@@ -1,16 +1,15 @@
-FROM ubuntu:14.04
-MAINTAINER Thomas Berger <th.berger@it.piratenpartei.de>
+FROM ubuntu:16.04
+MAINTAINER Marco A. Harrendorf <marco.harrendorf@cern.ch>
 
 
-RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get -y dist-upgrade && apt-get -y install apache2 rcs diffutils zip cron make gcc g++ pkg-config libssl-dev
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get -y dist-upgrade && apt-get -y install apache2 rcs diffutils zip cron make gcc g++ pkg-config libssl-dev cpanminus
 
-ADD http://sourceforge.net/projects/twiki/files/TWiki%20for%20all%20Platforms/TWiki-6.0.0/TWiki-6.0.0.tgz/download ./TWiki-6.0.0.tgz
-RUN mkdir -p /var/www && tar xfv TWiki-6.0.0.tgz -C /var/www && rm TWiki-6.0.0.tgz
+ADD http://sourceforge.net/projects/twiki/files/TWiki%20for%20all%20Platforms/TWiki-6.0.2/TWiki-6.0.2.tgz/download ./TWiki-6.0.2.tgz
+RUN mkdir -p /var/www && tar xfv TWiki-6.0.2.tgz -C /var/www && rm TWiki-6.0.2.tgz
 
 ADD perl/cpanfile /tmp/cpanfile
-ADD http://cpansearch.perl.org/src/THALJEF/Pinto-0.09995/etc/cpanm /tmp/cpanm
 
-RUN chmod +x /tmp/cpanm && /tmp/cpanm -l /var/www/twiki/lib/CPAN --installdeps /tmp/ && rm -rf /.cpanm /tmp/cpanm /tmp/cpanfile /var/www/twiki/lib/CPAN/man
+RUN cd /tmp && cpanm -l /var/www/twiki/lib/CPAN --installdeps /tmp/ && rm -rf /.cpanm  /tmp/cpanfile /var/www/twiki/lib/CPAN/man
 
 ADD configs/vhost.conf /etc/apache2/sites-available/twiki.conf
 ADD configs/LocalLib.cfg  /var/www/twiki/bin/LocalLib.cfg
