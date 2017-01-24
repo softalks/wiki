@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 MAINTAINER Marco A. Harrendorf <marco.harrendorf@cern.ch>
 
 
-RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get -y dist-upgrade && apt-get -y install apache2 rcs diffutils zip cron make gcc g++ pkg-config libssl-dev cpanminus
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get -y dist-upgrade && apt-get -y install apache2 rcs diffutils zip cron make gcc g++ pkg-config libssl-dev cpanminus libcgi-pm-perl
 
 ADD http://sourceforge.net/projects/twiki/files/TWiki%20for%20all%20Platforms/TWiki-6.0.2/TWiki-6.0.2.tgz/download ./TWiki-6.0.2.tgz
 RUN mkdir -p /var/www && tar xfv TWiki-6.0.2.tgz -C /var/www && rm TWiki-6.0.2.tgz
