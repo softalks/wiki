@@ -18,9 +18,16 @@ The following environment variables are parsed and used at the moment
 
 
 ## Example
+
+### Build docker image
+```
+docker build --tag twiki:6.0.2 github.com/mharrend/docker-twiki
+```
+
+### Start docker container from image
 ```bash
-docker run  --name="TWiki" --restart=always  -dt -p 8080:80 -v /home/data/:/data -e URL_HOST=http://10.11.12.13:8080/ -e ADMIN_PW=pass1234 twiki
+docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data -e URL_HOST=http://10.11.12.13:80/ -e ADMIN_PW=pass1234 -e ADMIN_EMAIL=admin@email -e ADMIN_NAME="Twiki admin" twiki
 ```
 
 ## Note: Forked
-This repository was forked from https://github.com/BundesIT/twiki-docker and then modified, so that a newer OS and TWiki version will be used.
+This repository was forked from https://github.com/BundesIT/twiki-docker and then modified, so that a newer OS and TWiki version and so on will be used.
