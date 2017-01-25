@@ -18,6 +18,6 @@ ADD bin/run.sh /run.sh
 RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www-data: /var/www/twiki && chmod +x /prepare-env.sh
 
 VOLUME ["/data"]
-ENTRYPOINT "/run.sh"
+ENTRYPOINT exec "/run.sh"
 
 EXPOSE 80
