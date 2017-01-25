@@ -1,4 +1,4 @@
-# TWiki-Docker
+# Docker-TWiki
 A Dockerized TWiki
 
 ## USAGE
