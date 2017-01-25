@@ -10,6 +10,8 @@ The following environment variables are parsed and used at the moment
 |   VAR         |    default            | description            |
 |---------------|-----------------------|------------------------|
 | ADMIN\_PW     | changeme              | Administrator Password |
+| ADMIN\_EMAIL  | changeme              | Administrator email address |
+| ADMIN\_NAME   | TWiki administrator   | Administrator name |
 | URL\_HOST     | http://localhost:80   | Full URL ( as received by the webserver ) |
 | SCRIPT\_PATH  | /bin                  | URI Path to "bin"      |
 | PUP\_PATH     | /pub                  | URI Path to "pub"      |
