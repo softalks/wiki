@@ -13,7 +13,6 @@ RUN cd /tmp && cpanm -l /var/www/twiki/lib/CPAN --installdeps /tmp/ && rm -rf /.
 ADD configs/vhost.conf /etc/apache2/sites-available/twiki.conf
 ADD configs/LocalLib.cfg  /var/www/twiki/bin/LocalLib.cfg
 ADD configs/LocalSite.cfg /var/www/twiki/lib/LocalSite.cfg
-ADD configs/setlib.cfg /var/www/twiki/bin/setlib.cfg
 ADD bin/prepare-env.sh /prepare-env.sh
 ADD bin/run.sh /run.sh
 RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www-data: /var/www/twiki && chmod +x /prepare-env.sh
