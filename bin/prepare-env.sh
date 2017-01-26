@@ -1,10 +1,10 @@
 #!/bin/bash
 # prepare the configuration file
 echo "preparing config ..."
-CRYPT_PW=$(perl -e 'my $pass = $ENV{ADMIN_PW} ? $ENV{ADMIN_PW} : "changeme" ; my @saltchars = ( "a".."z", "A".."Z", "0".."9", ".", "/" ); my $salt = $saltchars[int(rand($#saltchars+1))] . $saltchars[int(rand($#saltchars+1)) ]; print crypt($pass, $salt);' )
+CRYPT_PW=$(perl -e 'my $pass = $ENV{ADMIN_PW}; my @saltchars = ( "a".."z", "A".."Z", "0".."9", ".", "/" ); my $salt = $saltchars[int(rand($#saltchars+1))] . $saltchars[int(rand($#saltchars+1)) ]; print crypt($pass, $salt);' )
 
-URL_HOST=$( echo ${URL_HOST:-http://localhost:80} | sed -e 's:/$::' )
-sed -i "s|%PW%|${CRYPT_PW}|;s|%URL_HOST%|${URL_HOST}|;s|%SCRIPT_PATH%|${SCRIPT_PATH:-/bin}|;s|%PUP_PATH%|${PUP_PATH:-/pub}|;s|%ADMIN_NAME%|${ADMIN_NAME:-TWiki administrator}|;s|%ADMIN_EMAIL%|${ADMIN_EMAIL}|" /var/www/twiki/lib/LocalSite.cfg
+URL_HOST=$( echo ${URL_HOST} | sed -e 's:/$::' )
+sed -i "s|%PW%|${CRYPT_PW}|;s|%URL_HOST%|${URL_HOST}|;s|%SCRIPT_PATH%|${SCRIPT_PATH}|;s|%PUP_PATH%|${PUP_PATH}|;s|%ADMIN_NAME%|${ADMIN_NAME}|;s|%ADMIN_EMAIL%|${ADMIN_EMAIL}|" /var/www/twiki/lib/LocalSite.cfg
 
 echo "preparing data-share ..."
 # check if we hava a shared volume already
