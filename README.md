@@ -25,12 +25,12 @@ docker build --build-arg ADMIN_PW ...
 
 ### Build docker image
 ```
-docker build --tag twiki:6.0.2 github.com/mharrend/docker-twiki --build-arg URL_HOST=http://10.11.12.13:80/ --build-arg ADMIN_PW=pass1234 --build-arg ADMIN_EMAIL=admin@email --build-arg ADMIN_NAME="Twiki admin" twiki
+docker build --tag twiki:6.0.2  --build-arg URL_HOST=http://10.11.12.13:80/ --build-arg ADMIN_PW=pass1234 --build-arg ADMIN_EMAIL=admin@email --build-arg ADMIN_NAME="Twiki admin" github.com/mharrend/docker-twiki
 ```
 
 ### Start docker container from image
 ```bash
-docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data 
+docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data twiki
 ```
 
 ## Note: Forked
