@@ -18,7 +18,17 @@ RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www
 
 VOLUME ["/data"]
 
+
+ARG ADMIN_PW=changeme 	
+ARG ADMIN_EMAIL=changeme 
+ARG ADMIN_NAME="TWiki administrator" 	
+ARG URL_HOST=http://localhost:80 	
+ARG SCRIPT_PATH=/bin
+ARG PUP_PATH=/pub
+
 RUN /prepare-env.sh
+
+
 ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
 
 EXPOSE 80
