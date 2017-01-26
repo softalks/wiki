@@ -30,7 +30,7 @@ docker build --tag twiki:6.0.2  --build-arg URL_HOST=http://10.11.12.13:80/ --bu
 
 ### Start docker container from image
 ```bash
-docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data twiki
+docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data twiki:6.0.2
 ```
 
 ## Note: Forked
