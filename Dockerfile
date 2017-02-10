@@ -15,7 +15,7 @@ ADD configs/vhost.conf /etc/apache2/sites-available/twiki.conf
 ADD configs/LocalLib.cfg  /var/www/twiki/bin/LocalLib.cfg
 ADD configs/LocalSite.cfg /var/www/twiki/lib/LocalSite.cfg
 
-RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www-data: /var/www/twiki && chmod +x /prepare-env.sh
+RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www-data: /var/www/twiki
 RUN a2enmod ssl 
 RUN a2enmod rewrite
 
