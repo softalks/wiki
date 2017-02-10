@@ -61,7 +61,7 @@ docker build --tag twiki-ssl-ldap:6.0.2  github.com/mharrend/docker-twiki
 
 ### Start docker container from image
 ```bash
-docker run  --restart=always  -dt -p 80:80 -p 443:443 -v /docker/wiki:/data twiki-ssl-ldap:6.0.2
+docker run  --restart=always  -dt -p 80:80 -p 443:443 -v /docker:/data twiki-ssl-ldap:6.0.2
 ```
 
 ## Note: Forked
