@@ -11,8 +11,9 @@ external storage there ` -v /mnt/twiki:/data`.
 
 ## Data container
 * The data container is used to store the most important TWiki configurations in subfolder
+
 | data subfolder |    description            |
-|----------------|---------------------------|
+|---------------|-----------------------|
 | data/data      | Contains twiki data       |
 | data/pub       | Contains twiki public data like files |
 | data/ssl-certs | Contains wiki-fullchain.pem and wiki-key.pem |
