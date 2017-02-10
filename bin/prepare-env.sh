@@ -11,6 +11,7 @@ else
   echo "Missing LocalSite.cfg, preparing config based on template"
   CRYPT_PW=$(perl -e 'my $pass = $ENV{ADMIN_PW}; my @saltchars = ( "a".."z", "A".."Z", "0".."9", ".", "/" ); my $salt = $saltchars[int(rand($#saltchars+1))] . $saltchars[int(rand($#saltchars+1)) ]; print crypt($pass, $salt);' )
   URL_HOST=$( echo ${URL_HOST} | sed -e 's:/$::' )
+  mkdir /data/lib
   mv /var/www/twiki/lib/LocalSite.cfg /data/lib/LocalSite.cfg
   sed -i "s|%PW%|${CRYPT_PW}|;s|%URL_HOST%|${URL_HOST}|;s|%SCRIPT_PATH%|${SCRIPT_PATH}|;s|%PUP_PATH%|${PUP_PATH}|;s|%ADMIN_NAME%|${ADMIN_NAME}|;s|%ADMIN_EMAIL%|${ADMIN_EMAIL}|" /data/lib/LocalSite.cfg
 fi
@@ -25,7 +26,8 @@ if [ -f /data/data/mime.types ] ; then
   rm -rf /var/www/twiki/pub
 else
   echo "moving stock data ..."
-  mv /var/www/twiki/data /var/www/twiki/pub /data/
+  mv /var/www/twiki/data  /data/
+  mv /var/www/twiki/pub   /data/
 fi
 echo "linking data directories ..."
 ln -s /data/data /var/www/twiki/data
