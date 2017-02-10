@@ -26,7 +26,6 @@ requires 'Digest::SHA1';
 requires 'JSON';
 requires 'Locale::Maketext::Lexicon';
 requires 'URI';
-requires 'DB_File', '>=1.82';
 requires 'Digest::MD5', '>=2.36';
 requires 'Net::LDAP', '>=0.33';
 requires 'IO::Socket::SSL', '>=1.0';
