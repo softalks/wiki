@@ -29,12 +29,19 @@ external storage there ` -v /mnt/twiki:/data`.
 | ADMIN\_PW     | changeme              | Administrator Password |
 | ADMIN\_EMAIL  | changeme              | Administrator email address |
 | ADMIN\_NAME   | TWiki administrator   | Administrator name |
-| URL\_HOST     | http://localhost:80   | Full URL ( as received by the webserver ) |
+| URL\_HOST     | https://localhost   | Full URL ( as received by the webserver ) |
 | SCRIPT\_PATH  | /bin                  | URI Path to "bin"      |
 | PUP\_PATH     | /pub                  | URI Path to "pub"      |
-Note: This variables have to be set during build time via 
-```
-docker build --build-arg ADMIN_PW ...
+Note: This variables have to be set during run time via 
+```bash
+docker run ... \
+-e ADMIN\_PW=changeme \
+-e ADMIN\_EMAIL=admin@domain.com \
+-e ADMIN\_NAME="TWiki administrator" \
+-e URL\_HOST=https://localhost \
+-e SCRIPT\_PATH=/bin \
+-e PUP\_PATH=/pub \
+...
 ```
 
 ## SSL-Encryption
@@ -48,13 +55,13 @@ docker build --build-arg ADMIN_PW ...
 ## Example
 
 ### Build docker image
-```
-docker build --tag twiki:6.0.2  --build-arg URL_HOST=http://10.11.12.13:80/ --build-arg ADMIN_PW=pass1234 --build-arg ADMIN_EMAIL=admin@email --build-arg ADMIN_NAME="Twiki admin" github.com/mharrend/docker-twiki
+```bash
+docker build --tag twiki-ssl-ldap:6.0.2  github.com/mharrend/docker-twiki
 ```
 
 ### Start docker container from image
 ```bash
-docker run  --restart=always  -dt -p 80:80 -v /home/data/:/data twiki:6.0.2
+docker run  --restart=always  -dt -p 80:80 -p 443:443 -v /docker/wiki:/data twiki-ssl-ldap:6.0.2
 ```
 
 ## Note: Forked
