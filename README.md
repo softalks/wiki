@@ -1,5 +1,9 @@
 # Docker-TWiki
 A Dockerized TWiki
+* Version 6.0.2
+* Following features are enabled by default
+  * SSL encryption
+  * LDAPContrib plugin installation
 
 ## USAGE
 All Data will be stored under `/data`. You should attach some
