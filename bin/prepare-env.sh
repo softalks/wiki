@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Allow to attach to container
-sleep 15
-
 # Check if configuration file exists in data container
 if [ -f /data/lib/LocalSite.cfg ] ; then
   echo "External LocalSite.cfg exists, remove template"
