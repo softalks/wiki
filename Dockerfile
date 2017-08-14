@@ -19,7 +19,7 @@ RUN a2enmod cgi expires && a2dissite '*' && a2ensite twiki.conf && chown -cR www
 RUN a2enmod ssl 
 RUN a2enmod rewrite
 
-ADD http://twiki.org/p/pub/Plugins/LdapContrib/LdapContrib.tgz /var/www/twiki/LdapContrib.tgz
+RUN curl http://twiki.org/p/pub/Plugins/LdapContrib/LdapContrib.tgz > /var/www/twiki/LdapContrib.tgz
 RUN tar xfv /var/www/twiki/LdapContrib.tgz -C /var/www/twiki/
 
 ADD bin/prepare-env.sh /prepare-env.sh
