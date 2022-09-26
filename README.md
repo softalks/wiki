@@ -5,7 +5,7 @@ A Dockerized TWiki
   * SSL encryption
   * LDAPContrib plugin installation
 
-Nota: Se pretende añadir [soporte al encoding es_ES.ISO-8859-1](EsEsIso88591)
+Nota: Se pretende añadir [soporte al encoding es_ES.ISO-8859-1](wiki/EsEsIso88591)
 
 ## USAGE
 All Data will be stored under `/data`. You should attach some
