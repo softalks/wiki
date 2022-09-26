@@ -5,9 +5,13 @@ A Dockerized TWiki
   * SSL encryption
   * LDAPContrib plugin installation
 
+Nota: Se pretende añadir [soporte al encoding es_ES.ISO-8859-1](EsEsIso88591)
+
 ## USAGE
 All Data will be stored under `/data`. You should attach some
 external storage there ` -v /mnt/twiki:/data`.
+
+Nota: Es posible que este mapeo implique asignar unos persmisos específicos al directorio del contenedor y al del servidor que ejecuta docker
 
 ## Data container
 * The data container is used to store the most important TWiki configurations in subfolder
